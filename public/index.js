@@ -16,12 +16,18 @@ const newWorkout = document.querySelector(".new-workout")
 
 let workoutType = null;
 let shouldNavigateAway = false;
+
 init();
+
 async function init() {
+
   if (location.pathname.includes("/exercise") && location.search.split("=")[1] === undefined) {
-    console.log("excersise")
+    console.log("To add new excersise to the workout");
+    // Add new exercise to the workout
+    // Route "/api/workouts/:id" done
     const newWorkout = await API.createWorkout();
     const workout = await API.getLastWorkout();
+
     if (workout) {
       location.search = "?id=" + workout._id;
     }
@@ -30,10 +36,15 @@ async function init() {
     }
     return console.log(newWorkout);
   }
+  // if url = "/" (when default page is loaded)
+  // Routed created "/api/workouts"
   if (location.search.split("=")[1] === undefined) {
     const workout = await API.getLastWorkout();
     if (workout) {
+
       location.search = "?id=" + workout._id;
+      console.log("workhout found: ", workout);
+
     }
     else {
       newWorkout.classList.add("")
@@ -146,17 +157,21 @@ function clearInputs() {
   weightInput.value = "";
 }
 
-if(workoutTypeSelect) {
+if (workoutTypeSelect) {
   workoutTypeSelect.addEventListener("change", handleWorkoutTypeChange);
 }
-if(completeButton) {
-  completeButton.addEventListener("click", function(event) {
+if (completeButton) {
+  completeButton.addEventListener("click", function (event) {
+    shouldNavigateAway = true;
+    handleFormSubmit(event);
+
+  });
+}
+if (addButton) {
+  addButton.addEventListener("click", function (event) {
     shouldNavigateAway = true;
     handleFormSubmit(event);
   });
-}
-if(addButton) {
-  addButton.addEventListener("click", handleFormSubmit);
 }
 toast.addEventListener("animationend", handleToastAnimationEnd);
 

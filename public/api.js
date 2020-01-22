@@ -1,8 +1,9 @@
 const API = {
   async getLastWorkout() {
     const res = await fetch("/api/workouts");
+    console.log("waiting for data");
     const json = await res.json();
-
+    // return the last object in the collection
     return json[json.length - 1];
   },
   async addExercise(data) {
@@ -30,9 +31,9 @@ const API = {
   },
 
   async getWorkoutsInRange() {
-    const res = await fetch(`/api/workouts/range`);
+    const res = await fetch("/api/workouts/range");
     const json = await res.json();
-    
+
     return json;
   },
 };
