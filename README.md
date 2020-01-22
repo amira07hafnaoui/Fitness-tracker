@@ -7,7 +7,7 @@ live site :
 
 ## User Story
 
-* As a user, I want to be able to view create and track daily workouts.
+As a user, I want to be able to view create and track daily workouts.
 
 ## Business Context
 
