@@ -4,6 +4,7 @@
 This web application consists in the creation of a workout tracker. It is required to create Mongo database with a Mongoose schema and handle routes with Express.
 
 live site :
+https://fitness-tracker07.herokuapp.com/?id=5e27e5ef5010b300178f6705
 
 ## User Story
 
